@@ -1,26 +1,28 @@
-import type { Component } from "solid-js";
-
-import logo from "./logo.svg";
-import styles from "./App.module.css";
+import { createSignal, type Component } from "solid-js";
+import Board from "./components/Board";
+import Post from "./components/Post";
 
 const App: Component = () => {
+  const [date, setDate] = createSignal<string>("");
+
+  setTimeout(() => {
+    setDate("2024-02-09");
+  }, 1000);
+
   return (
-    <div class={styles.App}>
-      <header class={styles.header}>
-        <img src={logo} class={styles.logo} alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          class={styles.link}
-          href="https://github.com/solidjs/solid"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Solid
-        </a>
-      </header>
-    </div>
+    <>
+      <div class="fixed inset-x-0 top-0 h-12 bg-[--color-primary] text-[--color-background] font-mono flex justify-center items-center">
+        {date()}
+      </div>
+
+      <div class="py-12">
+        <Board />
+      </div>
+
+      <div class="fixed bottom-4 right-4">
+        <Post />
+      </div>
+    </>
   );
 };
 

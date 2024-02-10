@@ -2,16 +2,89 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --color-background: #d3dbd9;
+  --color-text: #6d7371;
+  --color-subtext: #71736e;
+  --color-primary: #005133;
+  --color-accent: #00b371;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  text-shadow: none;
+}
+
+html {
+  background: var(--color-background);
+  color: var(--color-text);
+  font:
+    100%/1.5 -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    Helvetica,
+    "Noto Sans JP",
+    "Yu Gothic",
+    sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+p {
+  font-feature-settings: "palt";
+  letter-spacing: 1px;
+  line-height: 1.6;
+  margin: 1em 0;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: inherit;
+}
+
+input,
+optgroup,
+select,
+textarea {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  text-align: inherit;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  outline: 0;
+}
+
+button {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  box-sizing: border-box;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
 }
