@@ -1,9 +1,22 @@
-import type { Component } from "solid-js";
+import { type Component, createSignal, Show } from "solid-js";
 
 const Post: Component = () => {
+  const [isOpen, setIsOpen] = createSignal<boolean>(false);
+  const toggle = () => setIsOpen(!isOpen());
+  const stopPropagation = (e: Event) => e.stopPropagation();
+  let form: HTMLFormElement | undefined;
+
+  const submit = (e: Event) => {
+    e.preventDefault();
+    console.log("submit");
+  };
+
   return (
     <>
-      <button class="bg-[--color-accent] text-white rounded-full h-12 w-12 p-2 shadow-lg">
+      <button
+        class="bg-[--color-accent] text-white rounded-full h-12 w-12 p-2 shadow-lg"
+        onClick={toggle}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -13,26 +26,39 @@ const Post: Component = () => {
         </svg>
       </button>
 
-      <div class="bg-black/50 backdrop-blur-sm fixed inset-0 flex flex-col justify-center items-center p-4">
-        <div class="max-w-screen-sm w-full">
-          <input
-            type="text"
-            name="name"
-            placeholder="お名前"
-            class="bg-[--color-background] rounded-lg p-4 w-full"
-          />
+      <Show when={isOpen()}>
+        <div
+          class="bg-black/50 backdrop-blur-sm fixed inset-0 flex flex-col justify-center items-center p-4"
+          onClick={toggle}
+        >
+          <form
+            ref={form}
+            class="max-w-screen-sm w-full"
+            onClick={stopPropagation}
+            onSubmit={submit}
+          >
+            <input
+              type="text"
+              name="name"
+              placeholder="お名前"
+              class="bg-[--color-background] rounded-lg p-4 w-full"
+            />
 
-          <textarea
-            name="content"
-            placeholder="祈りの課題"
-            class="bg-[--color-background] rounded-lg p-4 mt-2 w-full h-80 resize-none"
-          ></textarea>
+            <textarea
+              name="content"
+              placeholder="祈りの課題"
+              class="bg-[--color-background] rounded-lg p-4 mt-2 w-full h-80 resize-none"
+            ></textarea>
 
-          <button class="bg-[--color-accent] text-white rounded-lg p-4 mt-2 w-full">
-            送信
-          </button>
+            <button
+              type="submit"
+              class="bg-[--color-accent] text-white rounded-lg p-4 mt-2 w-full"
+            >
+              送信
+            </button>
+          </form>
         </div>
-      </div>
+      </Show>
     </>
   );
 };
