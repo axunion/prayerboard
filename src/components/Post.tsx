@@ -1,4 +1,25 @@
-import { type Component, createSignal, Show } from "solid-js";
+import { type Component, createSignal, createEffect, Show } from "solid-js";
+
+const keyframes = {
+  fadeIn: [
+    { opacity: 0, transform: "scale(0.95)" },
+    { opacity: 1, transform: "scale(1)" },
+  ],
+
+  fadeOut: [
+    { opacity: 1, transform: "scale(1)" },
+    { opacity: 0, transform: "scale(0.95)" },
+  ],
+};
+
+const options = {
+  fadeIn: {
+    duration: 250,
+  },
+  fadeOut: {
+    duration: 250,
+  },
+};
 
 const Post: Component = () => {
   const [isOpen, setIsOpen] = createSignal<boolean>(false);
@@ -10,6 +31,14 @@ const Post: Component = () => {
     e.preventDefault();
     console.log("submit");
   };
+
+  createEffect(() => {
+    if (isOpen()) {
+      form?.animate(keyframes.fadeIn, options.fadeIn);
+    } else {
+      form?.animate(keyframes.fadeOut, options.fadeOut);
+    }
+  });
 
   return (
     <>
