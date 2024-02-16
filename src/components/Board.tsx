@@ -1,25 +1,7 @@
-import { createSignal, For, type Component } from "solid-js";
-
-interface BoardItem {
-  id: number;
-  name: string;
-  description: string;
-}
-
-const BoardItem: Component<BoardItem> = (props) => {
-  // const [isOpen, setIsOpen] = createSignal<boolean>(false);
-
-  return (
-    <div class="bg-white p-3 rounded-sm shadow-md">
-      <div class="font-bold">{props.name}</div>
-      <p>{props.description}</p>
-    </div>
-  );
-};
+import { type Component, For } from "solid-js";
+import { boardData, addBoardItem } from "../stores/BoardData";
 
 const Board: Component = () => {
-  const [boardItem, setBoardItem] = createSignal<BoardItem[]>([]);
-
   setTimeout(() => {
     const items = [
       {
@@ -44,18 +26,17 @@ const Board: Component = () => {
       },
     ];
 
-    setBoardItem([...items, ...items]);
+    addBoardItem([...items, ...items]);
   }, 500);
 
   return (
     <div class="p-4 max-w-screen-md m-auto grid gap-3">
-      <For each={boardItem()}>
+      <For each={boardData.items}>
         {(item) => (
-          <BoardItem
-            id={item.id}
-            name={item.name}
-            description={item.description}
-          />
+          <div class="bg-white p-3 rounded-sm shadow-md">
+            <div class="font-bold">{item.name}</div>
+            <p>{item.description}</p>
+          </div>
         )}
       </For>
     </div>

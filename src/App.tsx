@@ -1,20 +1,22 @@
 import { createSignal, type Component, Show } from "solid-js";
 import Board from "./components/Board";
 import Form from "./components/Form";
+import { boardData, setBoardDate, setBoardTitle } from "./stores/BoardData";
 
 const App: Component = () => {
-  const [date, setDate] = createSignal<string>("");
   const [showForm, setShowForm] = createSignal<boolean>(false);
   const toggleForm = () => setShowForm(!showForm());
 
   setTimeout(() => {
-    setDate("2024-02-09");
+    setBoardTitle("祈りの課題");
+    setBoardDate("2024-02-09");
   }, 1000);
 
   return (
     <>
-      <div class="fixed inset-x-0 top-0 h-12 bg-[--color-primary] text-[--color-background] font-mono flex justify-center items-center">
-        {date()}
+      <div class="fixed inset-x-0 top-0 h-12 bg-[--color-primary] text-[--color-background] flex justify-center items-center">
+        {boardData.titel}
+        <span class="font-mono ml-2">{boardData.date}</span>
       </div>
 
       <div class="py-12">
