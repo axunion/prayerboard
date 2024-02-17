@@ -3,23 +3,23 @@ import { createStore } from "solid-js/store";
 export interface BoardItem {
   id: number;
   name: string;
-  description: string;
+  content: string;
 }
 
 export interface BoardData {
-  titel: string;
+  title: string;
   date: string;
   items: BoardItem[];
 }
 
 export const [boardData, setBoardData] = createStore<BoardData>({
-  titel: "",
+  title: "",
   date: "",
   items: [],
 });
 
 export const setBoardTitle = (title: string) => {
-  setBoardData("titel", title);
+  setBoardData("title", title);
 };
 
 export const setBoardDate = (date: string) => {

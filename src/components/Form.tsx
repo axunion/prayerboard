@@ -1,4 +1,5 @@
 import { type Component, onMount } from "solid-js";
+import { addBoardItem } from "../stores/BoardData";
 
 const keyframes = {
   fadeIn: [{ opacity: 0 }, { opacity: 1 }],
@@ -47,7 +48,14 @@ const Form: Component<{
 
   const submit = (e: Event) => {
     e.preventDefault();
-    console.log("submit");
+
+    const formData = new FormData(form);
+    const postData = Object.fromEntries(formData) as Record<string, string>;
+
+    console.log(postData);
+
+    addBoardItem([{ id: 0, name: postData.name, content: postData.content }]);
+
     close();
   };
 
@@ -67,12 +75,14 @@ const Form: Component<{
           type="text"
           name="name"
           placeholder="お名前"
+          required
           class="bg-[--color-background] rounded-lg p-4 w-full"
         />
 
         <textarea
           name="content"
           placeholder="祈りの課題"
+          required
           class="bg-[--color-background] rounded-lg p-4 mt-2 w-full h-80 resize-none"
         ></textarea>
 

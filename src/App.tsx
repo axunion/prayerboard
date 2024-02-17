@@ -15,7 +15,7 @@ const App: Component = () => {
   return (
     <>
       <div class="fixed inset-x-0 top-0 h-12 bg-[--color-primary] text-[--color-background] flex justify-center items-center">
-        {boardData.titel}
+        {boardData.title}
         <span class="font-mono ml-2">{boardData.date}</span>
       </div>
 
