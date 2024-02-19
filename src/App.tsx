@@ -19,7 +19,7 @@ const App: Component = () => {
         <span class="font-mono ml-2">{boardData.date}</span>
       </div>
 
-      <div class="py-20">
+      <div class="py-16">
         <Board />
       </div>
 

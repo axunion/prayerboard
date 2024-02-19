@@ -18,9 +18,9 @@ const keyframes = {
 
 const options = {
   fadeIn: { duration: 200 },
-  fadeOut: { duration: 400 },
+  fadeOut: { duration: 200 },
   slideUp: { duration: 250 },
-  slideDown: { duration: 400 },
+  slideDown: { duration: 250 },
 };
 
 const Form: Component<{
