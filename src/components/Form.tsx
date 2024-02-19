@@ -81,7 +81,7 @@ const Form: Component<{
 
         <textarea
           name="content"
-          placeholder="祈りの課題"
+          placeholder="内容"
           required
           class="bg-[--color-background] rounded-lg p-4 mt-2 w-full h-80 resize-none"
         ></textarea>

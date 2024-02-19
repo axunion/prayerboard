@@ -1,12 +1,18 @@
-import { type Component, For } from "solid-js";
+import { type Component, For, Show } from "solid-js";
 import { boardData } from "../stores/BoardData";
 
 const Board: Component = () => {
   return (
-    <div class="p-4 max-w-screen-md m-auto grid gap-3">
+    <div class="max-w-screen-md m-auto p-4 flex flex-col gap-4">
+      <Show when={boardData.items.length === 0}>
+        <div class="bg-white px-3 py-20 rounded-md shadow-md text-center">
+          <p>まだ投稿がありません</p>
+        </div>
+      </Show>
+
       <For each={boardData.items}>
         {(item) => (
-          <div class="bg-white p-3 rounded-sm shadow-md">
+          <div class="bg-white p-3 rounded-md shadow-md">
             <div class="font-bold">{item.name}</div>
             <p>{item.content}</p>
           </div>

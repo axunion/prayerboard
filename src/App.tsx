@@ -8,9 +8,9 @@ const App: Component = () => {
   const toggleForm = () => setShowForm(!showForm());
 
   setTimeout(() => {
-    setBoardTitle("祈りの課題");
+    setBoardTitle("日付");
     setBoardDate("2024-02-09");
-  }, 1000);
+  }, 500);
 
   return (
     <>
@@ -19,7 +19,7 @@ const App: Component = () => {
         <span class="font-mono ml-2">{boardData.date}</span>
       </div>
 
-      <div class="py-12">
+      <div class="py-20">
         <Board />
       </div>
 
