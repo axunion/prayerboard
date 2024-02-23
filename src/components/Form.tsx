@@ -5,22 +5,22 @@ const keyframes = {
   fadeIn: [{ opacity: 0 }, { opacity: 1 }],
   fadeOut: [{ opacity: 1 }, { opacity: 0 }],
   slideUp: [
-    { opacity: 0, transform: "translateY(20px)" },
+    { opacity: 0, transform: "scale(0.95)" },
     { opacity: 1 },
-    { opacity: 1, transform: "translateY(0)" },
+    { opacity: 1, transform: "scale(1)" },
   ],
   slideDown: [
-    { opacity: 1, transform: "translateY(0)" },
-    { opacity: 1 },
-    { opacity: 0, transform: "translateY(20px)" },
+    { opacity: 1, transform: "scale(1)" },
+    { opacity: 0 },
+    { opacity: 0, transform: "scale(0.95)" },
   ],
 };
 
 const options = {
   fadeIn: { duration: 200 },
-  fadeOut: { duration: 200 },
+  fadeOut: { duration: 250 },
   slideUp: { duration: 250 },
-  slideDown: { duration: 250 },
+  slideDown: { duration: 200 },
 };
 
 const Form: Component<{
