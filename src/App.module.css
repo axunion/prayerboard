@@ -1,0 +1,41 @@
+.header {
+  background: var(--color-primary);
+  color: var(--color-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.date {
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  margin-left: 0.5rem;
+}
+
+.content {
+  padding-block: 4rem;
+}
+
+.fabWrapper {
+  bottom: 1rem;
+  position: fixed;
+  right: 1rem;
+}
+
+.fab {
+  background: var(--color-accent);
+  border-radius: 9999px;
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  color: #fff;
+  height: 3rem;
+  padding: 0.5rem;
+  width: 3rem;
+}

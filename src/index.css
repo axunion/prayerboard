@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
   --color-background: #d3dbd9;
   --color-text: #6d7371;
@@ -20,7 +16,7 @@ html {
   background: var(--color-background);
   color: var(--color-text);
   font:
-    100%/1.5 -apple-system,
+    100% / 1.5 -apple-system,
     BlinkMacSystemFont,
     Roboto,
     Helvetica,

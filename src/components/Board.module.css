@@ -1,0 +1,32 @@
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-inline: auto;
+  max-width: 768px;
+  padding: 1.5rem;
+}
+
+.empty {
+  background: #fff;
+  border-radius: 0.375rem;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  margin-top: 1.5rem;
+  padding-block: 5rem;
+  text-align: center;
+}
+
+.item {
+  background: #fff;
+  border-radius: 0.375rem;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  padding: 0.75rem;
+}
+
+.name {
+  font-weight: bold;
+}

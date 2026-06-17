@@ -1,5 +1,6 @@
 import { type Component, onMount } from "solid-js";
 import { addBoardItem } from "../stores/BoardData";
+import styles from "./Form.module.css";
 
 const keyframes = {
   fadeIn: [{ opacity: 0 }, { opacity: 1 }],
@@ -31,19 +32,16 @@ const Form: Component<{
   let form: HTMLFormElement | undefined;
 
   onMount(() => {
-    overlay!.animate(keyframes.fadeIn, options.fadeIn);
-    form!.animate(keyframes.slideUp, options.slideUp);
+    overlay?.animate(keyframes.fadeIn, options.fadeIn);
+    form?.animate(keyframes.slideUp, options.slideUp);
   });
 
   const close = () => {
-    const animation = overlay!.animate(keyframes.fadeOut, options.fadeOut);
-    form!.animate(keyframes.slideDown, options.slideDown);
+    if (!overlay || !form) return;
+    const animation = overlay.animate(keyframes.fadeOut, options.fadeOut);
+    form.animate(keyframes.slideDown, options.slideDown);
 
     animation.onfinish = () => props.setShowForm(false);
-  };
-
-  const stopPropagation = (e: Event) => {
-    e.stopPropagation();
   };
 
   const submit = (e: Event) => {
@@ -60,36 +58,30 @@ const Form: Component<{
   };
 
   return (
-    <div
-      ref={overlay}
-      class="bg-black/50 backdrop-blur-sm fixed inset-0 flex flex-col justify-center items-center p-4"
-      onClick={close}
-    >
-      <form
-        ref={form}
-        class="max-w-screen-sm w-full"
-        onClick={stopPropagation}
-        onSubmit={submit}
-      >
+    <div ref={overlay} class={styles.overlay}>
+      <button
+        type="button"
+        class={styles.overlayBackdrop}
+        onClick={close}
+        aria-label="フォームを閉じる"
+      />
+      <form ref={form} class={styles.form} onSubmit={submit}>
         <input
           type="text"
           name="name"
           placeholder="お名前"
           required
-          class="bg-[--color-background] rounded-lg p-4 w-full"
+          class={styles.input}
         />
 
         <textarea
           name="content"
           placeholder="内容"
           required
-          class="bg-[--color-background] rounded-lg p-4 mt-2 w-full h-80 resize-none"
-        ></textarea>
+          class={styles.textarea}
+        />
 
-        <button
-          type="submit"
-          class="bg-[--color-accent] text-white rounded-lg p-4 mt-2 w-full"
-        >
+        <button type="submit" class={styles.button}>
           送信
         </button>
       </form>
