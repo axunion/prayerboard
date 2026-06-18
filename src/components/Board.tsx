@@ -1,26 +1,32 @@
-import { type Component, For, Show } from "solid-js";
-import { boardData } from "../stores/BoardData";
+import { Inbox } from "lucide-solid";
+import { For, Show } from "solid-js";
+import { postState } from "../stores/posts";
 import styles from "./Board.module.css";
+import Note from "./Note";
 
-const Board: Component = () => {
+export default function Board() {
   return (
-    <div class={styles.board}>
-      <Show when={boardData.items.length === 0}>
+    <Show
+      when={postState.posts.length > 0}
+      fallback={
         <div class={styles.empty}>
-          <p>まだ投稿がありません</p>
+          <Inbox size={52} strokeWidth={1.25} class={styles.emptyIcon} />
+          <span class={styles.emptyText}>まだメッセージがありません</span>
+          <span class={styles.emptyHint}>最初のメッセージをどうぞ</span>
         </div>
-      </Show>
-
-      <For each={boardData.items}>
-        {(item) => (
-          <div class={styles.item}>
-            <div class={styles.name}>{item.name}</div>
-            <p>{item.content}</p>
-          </div>
-        )}
-      </For>
-    </div>
+      }
+    >
+      <div class={styles.board}>
+        <For each={postState.posts}>
+          {(post) => (
+            <Note
+              name={post.name}
+              content={post.content}
+              createdAt={post.createdAt}
+            />
+          )}
+        </For>
+      </div>
+    </Show>
   );
-};
-
-export default Board;
+}

@@ -1,32 +1,25 @@
-:root {
-  --color-background: #d3dbd9;
-  --color-text: #6d7371;
-  --color-subtext: #71736e;
-  --color-primary: #005133;
-  --color-accent: #00b371;
-}
-
 ::selection {
   background-color: var(--color-primary);
-  color: var(--color-background);
+  color: var(--color-on-primary);
   text-shadow: none;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
-  background: var(--color-background);
+  background: var(--color-board);
   color: var(--color-text);
-  font:
-    100% / 1.5 -apple-system,
-    BlinkMacSystemFont,
-    Roboto,
-    Helvetica,
-    "Noto Sans JP",
-    "Yu Gothic",
-    sans-serif;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--line-height-base);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -40,18 +33,17 @@ body {
 
 p {
   font-feature-settings: "palt";
-  letter-spacing: 1px;
-  line-height: 1.6;
-  margin: 1em 0;
+  letter-spacing: 0.02em;
+  line-height: var(--line-height-base);
+  margin: 0;
 }
 
 a {
   color: var(--color-primary);
-  text-decoration: inherit;
+  text-decoration: none;
 }
 
 input,
-optgroup,
 select,
 textarea {
   appearance: none;
@@ -66,11 +58,6 @@ textarea {
   text-align: inherit;
 }
 
-input:focus-visible,
-textarea:focus-visible {
-  outline: 0;
-}
-
 button {
   appearance: none;
   -webkit-appearance: none;
@@ -83,4 +70,10 @@ button {
   margin: 0;
   outline: 0;
   padding: 0;
+}
+
+/* Keyboard focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }

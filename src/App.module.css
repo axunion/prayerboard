@@ -1,41 +1,65 @@
-.header {
-  background: var(--color-primary);
-  color: var(--color-background);
+.app {
   display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
   align-items: center;
-  justify-content: center;
-  height: 3rem;
+  background: var(--color-primary-strong);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  color: var(--color-on-primary);
+  display: flex;
+  height: 3.5rem;
   left: 0;
+  padding: 0 var(--space-5);
   position: fixed;
   right: 0;
   top: 0;
+  z-index: var(--z-header);
 }
 
-.date {
-  font-family:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace;
-  margin-left: 0.5rem;
+.title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.03em;
+  margin: 0;
 }
 
-.content {
-  padding-block: 4rem;
-}
-
-.fabWrapper {
-  bottom: 1rem;
-  position: fixed;
-  right: 1rem;
+.main {
+  flex: 1;
+  /* Offset for fixed header (3.5rem) and FAB clearance at bottom */
+  padding-bottom: 5rem;
+  padding-top: 3.5rem;
 }
 
 .fab {
+  align-items: center;
   background: var(--color-accent);
-  border-radius: 9999px;
-  box-shadow:
-    0 10px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
-  color: #fff;
-  height: 3rem;
-  padding: 0.5rem;
-  width: 3rem;
+  border-radius: var(--radius-lg);
+  bottom: var(--space-5);
+  box-shadow: var(--shadow-raised);
+  /* lime-500 needs dark text for WCAG AA contrast (~6:1) */
+  color: var(--color-text);
+  display: flex;
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  position: fixed;
+  right: var(--space-5);
+  transition:
+    background 0.15s,
+    color 0.12s,
+    transform 0.1s;
+  z-index: var(--z-fab);
+}
+
+.fab:hover {
+  background: var(--color-primary-strong);
+  color: var(--color-on-primary);
+}
+
+.fab:active {
+  transform: scale(0.96);
 }
