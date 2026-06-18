@@ -6,9 +6,9 @@ import Board from "./Board";
 describe("Board", () => {
   beforeEach(clearPosts);
 
-  it("shows empty state text when no posts exist", () => {
-    const { getByText } = render(() => <Board />);
-    expect(getByText("まだメッセージがありません")).toBeTruthy();
+  it("shows no articles in empty state", () => {
+    const { queryAllByRole } = render(() => <Board />);
+    expect(queryAllByRole("article")).toHaveLength(0);
   });
 
   it("renders one article per post", () => {

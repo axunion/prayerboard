@@ -1,16 +1,14 @@
 :root {
-  /* Color: Fresh green + lime palette */
-  --color-board: #f0fdf4; /* green-50: bright, airy board */
-  --color-surface: #ffffff; /* pure white notes */
-  --color-primary: #16a34a; /* green-600: interactive elements */
-  --color-primary-strong: #166534; /* green-800: header / deep emphasis */
-  --color-primary-soft: #dcfce7; /* green-100: note header tint */
-  --color-accent: #84cc16; /* lime-500: yellow-green FAB / CTA */
-  --color-on-primary: #ffffff; /* white text on dark green surfaces */
-  --color-text: #14532d; /* green-900: body ink */
-  --color-text-muted: #6b7280; /* neutral grey for secondary text */
-  --color-border: #86efac; /* green-300: fresh, visible borders */
-  --color-danger: #dc2626; /* red-600 */
+  /* Color: Soft sage paper + white notes */
+  --color-board: #f1f5ee; /* sage paper — page background */
+  --color-surface: #ffffff; /* white note */
+  --color-primary: #5b8c6e; /* sage — interactive / accent */
+  --color-primary-strong: #3f6b52; /* deeper sage — hover / active */
+  --color-primary-soft: #e8efe3; /* faint sage — hover tint */
+  --color-on-primary: #ffffff; /* on filled sage surfaces */
+  --color-text: #2e3a32; /* ink */
+  --color-text-muted: #7c887d; /* secondary text */
+  --color-border: #dde6d6; /* hairline */
 
   /* Spacing (4px grid) */
   --space-1: 0.25rem;
@@ -25,10 +23,11 @@
   --radius-md: 8px;
   --radius-lg: 20px;
 
-  /* Elevation */
-  --shadow-note: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.06);
+  /* Elevation — very light, ink-tinted for a paper feel */
+  --shadow-note:
+    0 1px 2px rgba(46, 58, 50, 0.06), 0 1px 1px rgba(46, 58, 50, 0.04);
   --shadow-raised:
-    0 4px 16px rgba(0, 0, 0, 0.16), 0 1px 4px rgba(0, 0, 0, 0.08);
+    0 6px 20px rgba(46, 58, 50, 0.14), 0 2px 6px rgba(46, 58, 50, 0.08);
 
   /* Typography */
   --font-sans:
@@ -37,15 +36,10 @@
   --text-sm: 0.8125rem; /* 13px */
   --text-base: 0.9375rem; /* 15px */
   --text-lg: 1.0625rem; /* 17px */
-  --text-xl: 1.25rem; /* 20px */
-  --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
-  --line-height-tight: 1.4;
   --line-height-base: 1.65;
 
   /* Layer order */
-  --z-header: 10;
   --z-fab: 20;
-  --z-dialog: 30;
 }

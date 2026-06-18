@@ -11,20 +11,12 @@ export default function Board() {
       fallback={
         <div class={styles.empty}>
           <Inbox size={52} strokeWidth={1.25} class={styles.emptyIcon} />
-          <span class={styles.emptyText}>まだメッセージがありません</span>
-          <span class={styles.emptyHint}>最初のメッセージをどうぞ</span>
         </div>
       }
     >
       <div class={styles.board}>
         <For each={postState.posts}>
-          {(post) => (
-            <Note
-              name={post.name}
-              content={post.content}
-              createdAt={post.createdAt}
-            />
-          )}
+          {(post) => <Note name={post.name} content={post.content} />}
         </For>
       </div>
     </Show>

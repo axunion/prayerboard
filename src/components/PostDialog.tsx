@@ -16,7 +16,7 @@ export default function PostDialog(props: Props) {
     if (props.open()) {
       if (!dialogRef.open) dialogRef.showModal();
     } else {
-      if (dialogRef.open) dialogRef.close();
+      dialogRef.close();
     }
   });
 
@@ -26,30 +26,23 @@ export default function PostDialog(props: Props) {
   };
 
   return (
-    // biome-ignore lint/a11y/useKeyWithClickEvents: <dialog> handles keyboard via the native cancel event (Escape)
     <dialog
       ref={dialogRef}
       class={styles.dialog}
-      onClick={(e) => {
-        if (e.target === dialogRef) close();
-      }}
       onCancel={(e) => {
         e.preventDefault();
         close();
       }}
     >
       <div class={styles.panel}>
-        <div class={styles.header}>
-          <h2 class={styles.title}>メッセージを書く</h2>
-          <button
-            type="button"
-            class={styles.closeBtn}
-            onClick={close}
-            aria-label="閉じる"
-          >
-            <X size={20} />
-          </button>
-        </div>
+        <button
+          type="button"
+          class={styles.closeBtn}
+          onClick={close}
+          aria-label="閉じる"
+        >
+          <X size={18} />
+        </button>
         <form
           ref={formRef}
           class={styles.form}
@@ -65,20 +58,13 @@ export default function PostDialog(props: Props) {
         >
           <label class={styles.label}>
             お名前
-            <input
-              name="name"
-              class={styles.input}
-              placeholder="お名前を入力してください"
-              required
-              maxLength={50}
-            />
+            <input name="name" class={styles.input} required maxLength={50} />
           </label>
           <label class={styles.label}>
             メッセージ
             <textarea
               name="content"
               class={styles.textarea}
-              placeholder="メッセージを入力してください"
               required
               maxLength={500}
             />

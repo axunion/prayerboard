@@ -3,14 +3,25 @@ import { createSignal } from "solid-js";
 import styles from "./App.module.css";
 import Board from "./components/Board";
 import PostDialog from "./components/PostDialog";
+import { boardState } from "./stores/board";
 
 export default function App() {
   const [dialogOpen, setDialogOpen] = createSignal(false);
 
+  const today = new Date().toLocaleDateString("ja-JP", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
   return (
     <div class={styles.app}>
       <header class={styles.header}>
-        <h1 class={styles.title}>Prayerboard</h1>
+        <span class={styles.brand}>Prayerboard</span>
+        <div class={styles.boardMeta}>
+          <span class={styles.boardName}>{boardState.name}</span>
+          <time class={styles.boardDate}>{today}</time>
+        </div>
       </header>
       <main class={styles.main}>
         <Board />
@@ -19,10 +30,9 @@ export default function App() {
         type="button"
         class={styles.fab}
         onClick={() => setDialogOpen(true)}
-        aria-label="書き込む"
+        aria-label="メッセージを書く"
       >
-        <Plus size={20} aria-hidden="true" />
-        書き込む
+        <Plus size={22} aria-hidden="true" />
       </button>
       <PostDialog open={dialogOpen} onClose={() => setDialogOpen(false)} />
     </div>
