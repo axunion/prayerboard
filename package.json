@@ -22,23 +22,35 @@
     "preview": "vite preview",
     "check": "biome check && tsc -b --noEmit",
     "fix": "biome check --write",
-    "test": "vitest run"
+    "test": "vitest run",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "wrangler d1 migrations apply prayerboard --local",
+    "db:reset": "node -e \"require('fs').rmSync('.wrangler/state',{recursive:true,force:true})\" && pnpm db:migrate",
+    "db:seed": "wrangler d1 execute prayerboard --local --file=drizzle/seed.sql",
+    "dev:fresh": "pnpm db:reset && pnpm db:seed && pnpm dev"
   },
   "dependencies": {
+    "drizzle-orm": "^0.45.2",
+    "hono": "^4.12.26",
     "lucide-solid": "^1.20.0",
-    "solid-js": "^1.9.12"
+    "solid-js": "^1.9.12",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.0",
+    "@cloudflare/vite-plugin": "^1.42.1",
+    "@cloudflare/workers-types": "^4.20260620.1",
     "@solidjs/testing-library": "^0.8.10",
     "@types/node": "^24.12.3",
     "browserslist": "^4.28.2",
+    "drizzle-kit": "^0.31.10",
     "jsdom": "^29.1.1",
     "lefthook": "^2.1.9",
     "lightningcss": "^1.32.0",
     "typescript": "~6.0.2",
     "vite": "^8.0.12",
     "vite-plugin-solid": "^2.11.12",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.9",
+    "wrangler": "^4.103.0"
   }
 }

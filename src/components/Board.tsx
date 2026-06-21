@@ -1,13 +1,17 @@
 import { Inbox } from "lucide-solid";
 import { For, Show } from "solid-js";
-import { postState } from "../stores/posts";
+import type { Post } from "../shared/types";
 import styles from "./Board.module.css";
 import Note from "./Note";
 
-export default function Board() {
+type Props = {
+  posts: Post[];
+};
+
+export default function Board(props: Props) {
   return (
     <Show
-      when={postState.posts.length > 0}
+      when={props.posts.length > 0}
       fallback={
         <div class={styles.empty}>
           <Inbox size={52} strokeWidth={1.25} class={styles.emptyIcon} />
@@ -15,7 +19,7 @@ export default function Board() {
       }
     >
       <div class={styles.board}>
-        <For each={postState.posts}>
+        <For each={props.posts}>
           {(post) => <Note name={post.name} content={post.content} />}
         </For>
       </div>

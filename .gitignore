@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Local dev secrets — keep out of source control
+.dev.vars
+
+# Wrangler local state (D1 data, KV, etc.)
+.wrangler
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

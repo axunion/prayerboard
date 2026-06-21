@@ -1,11 +1,11 @@
 import { X } from "lucide-solid";
 import { createEffect } from "solid-js";
-import { addPost } from "../stores/posts";
 import styles from "./PostDialog.module.css";
 
 type Props = {
   open: () => boolean;
   onClose: () => void;
+  onSubmit: (name: string, content: string) => void;
 };
 
 export default function PostDialog(props: Props) {
@@ -52,7 +52,7 @@ export default function PostDialog(props: Props) {
             const name = (data.get("name") as string).trim();
             const content = (data.get("content") as string).trim();
             if (!name || !content) return;
-            addPost(name, content);
+            props.onSubmit(name, content);
             close();
           }}
         >
